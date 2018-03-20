@@ -1,6 +1,6 @@
 #include <stdint.h>
 
-#define GPIO ((NRF_GPIO_REGS*)0x5)
+#define GPIO ((NRF_GPIO_REGS*)0x50000000)
 
 typedef struct {
 	volatile uint32_t RESERVED0[321];
@@ -38,6 +38,7 @@ int main(){
 			GPIO->OUTCLR = (1 << 14);
 			GPIO->OUTCLR = (1 << 15);
 		}
+
 
 		else if ((GPIO->IN & mask_b) != mask_b) {
 			GPIO->OUTSET = (1 << 13);
